@@ -101,8 +101,6 @@ transition: none
 
 <Note>Page 5</Note>
 
-<Note> TODO: edit image to show diff viewer</Note>
-
 ---
 
 transition: none
@@ -120,12 +118,10 @@ transition: none
 
 <Note>Page 6</Note>
 
-
 <Note> 
   2つ目のwindowは各worktreeのdiffを見たり、手作業でコードする場所として使っています。
   3つ目のwindowは各worktreeのサーバー、クライアントを立ち上げて動作確認する場所として使っています。
   その他、各worktreeのテスト結果を確認するために都度windowを開いています。
-  TODO: edit image to show manual editing
 </Note>
 
 ---
@@ -211,7 +207,7 @@ transition: none
 git worktree add feature-branch
 ```
 
-<Note>Page 13</Note>
+<Note>Page 12</Note>
 
 ---
 
@@ -227,7 +223,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 14</Note>
+<Note>Page 13</Note>
 
 ---
 
@@ -245,7 +241,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 15</Note>
+<Note>Page 14</Note>
 
 ---
 
@@ -263,13 +259,13 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 16</Note>
+<Note>Page 15</Note>
 
 ---
 
 # 自分のworktreeの使い方
 
-<Note>Page 17</Note>
+<Note>Page 16</Note>
 
 ---
 
@@ -285,7 +281,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 18</Note>
+<Note>Page 17</Note>
 
 ---
 
@@ -302,13 +298,13 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 19</Note>
+<Note>Page 18</Note>
 
 ---
 
 # git worktree の問題点
 
-<Note>Page 20</Note>
+<Note>Page 19</Note>
 
 ---
 
@@ -325,7 +321,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 21</Note>
+<Note>Page 20</Note>
 
 ---
 
@@ -342,7 +338,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 22</Note>
+<Note>Page 21</Note>
 
 ---
 
@@ -352,7 +348,7 @@ transition: none
 git clone --bare <repository-url>
 ```
 
-<Note>Page 23</Note>
+<Note>Page 22</Note>
 
 ---
 
@@ -361,6 +357,23 @@ git clone --bare <repository-url>
 <Row>
   <Column align="left">
     <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
+  </Column>
+</Row>
+
+<Note>Page 23</Note>
+
+---
+
+transition: none
+
+--
+
+# git bare clone
+
+<Row>
+  <Column align="left">
+    <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
+    <Text>• 複数のworktreeを作成してもdiffに表示されない</Text>
   </Column>
 </Row>
 
@@ -378,6 +391,7 @@ transition: none
   <Column align="left">
     <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
     <Text>• 複数のworktreeを作成してもdiffに表示されない</Text>
+    <Text>• git worktree を使って作業する前提のclone方法</Text>
   </Column>
 </Row>
 
@@ -385,25 +399,23 @@ transition: none
 
 ---
 
-transition: none
-
---
-
-# git bare clone
-
-<Row>
-  <Column align="left">
-    <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
-    <Text>• 複数のworktreeを作成してもdiffに表示されない</Text>
-    <Text>• git worktree を使って作業する前提のclone方法</Text>
-  </Column>
-</Row>
+# 自分のClaude Codeの使い方
 
 <Note>Page 26</Note>
 
 ---
 
+transition: none
+
+--
+
 # 自分のClaude Codeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+  </Column>
+</Row>
 
 <Note>Page 27</Note>
 
@@ -418,6 +430,7 @@ transition: none
 <Row>
   <Column align="left">
     <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
   </Column>
 </Row>
 
@@ -435,6 +448,7 @@ transition: none
   <Column align="left">
     <Text>• 複数のworktreeで分割したタスクを実行している</Text>
     <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
+    <Text>• 自分の腕が増えたようなイメージ</Text>
   </Column>
 </Row>
 
@@ -453,6 +467,7 @@ transition: none
     <Text>• 複数のworktreeで分割したタスクを実行している</Text>
     <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
     <Text>• 自分の腕が増えたようなイメージ</Text>
+    <Text>• やりたいけど着手する余裕がなかったタスクを裏で動かす</Text>
   </Column>
 </Row>
 
@@ -472,6 +487,7 @@ transition: none
     <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
     <Text>• 自分の腕が増えたようなイメージ</Text>
     <Text>• やりたいけど着手する余裕がなかったタスクを裏で動かす</Text>
+    <Text>• 日々のワークフローで行う動作をスクリプト化する</Text>
   </Column>
 </Row>
 
@@ -479,27 +495,23 @@ transition: none
 
 ---
 
-transition: none
-
---
-
-# 自分のClaude Codeの使い方
-
-<Row>
-  <Column align="left">
-    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
-    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
-    <Text>• 自分の腕が増えたようなイメージ</Text>
-    <Text>• やりたいけど着手する余裕がなかったタスクを裏で動かす</Text>
-    <Text>• 日々のワークフローで行う動作をスクリプト化する</Text>
-  </Column>
-</Row>
+# 作成したスクリプト
 
 <Note>Page 32</Note>
 
 ---
 
+transition: none
+
+--
+
 # 作成したスクリプト
+
+<Row>
+  <Column align="left">
+    <Text>• worktree を切り替えるショートカット</Text>
+  </Column>
+</Row>
 
 <Note>Page 33</Note>
 
@@ -514,6 +526,7 @@ transition: none
 <Row>
   <Column align="left">
     <Text>• worktree を切り替えるショートカット</Text>
+    <Text>• worktree の root branch に戻るスクリプト</Text>
   </Column>
 </Row>
 
@@ -531,6 +544,7 @@ transition: none
   <Column align="left">
     <Text>• worktree を切り替えるショートカット</Text>
     <Text>• worktree の root branch に戻るスクリプト</Text>
+    <Text>• .env ファイルを各worktreeにコピーするスクリプト</Text>
   </Column>
 </Row>
 
@@ -549,6 +563,7 @@ transition: none
     <Text>• worktree を切り替えるショートカット</Text>
     <Text>• worktree の root branch に戻るスクリプト</Text>
     <Text>• .env ファイルを各worktreeにコピーするスクリプト</Text>
+    <Text>• 各tmux paneに同じコマンドをするスクリプト</Text>
   </Column>
 </Row>
 
@@ -556,18 +571,10 @@ transition: none
 
 ---
 
-transition: none
-
---
-
-# 作成したスクリプト
+# まとめ
 
 <Row>
   <Column align="left">
-    <Text>• worktree を切り替えるショートカット</Text>
-    <Text>• worktree の root branch に戻るスクリプト</Text>
-    <Text>• .env ファイルを各worktreeにコピーするスクリプト</Text>
-    <Text>• 各tmux paneに同じコマンドをするスクリプト</Text>
   </Column>
 </Row>
 
@@ -575,11 +582,15 @@ transition: none
 
 ---
 
+transition: none
+
+--
+
 # まとめ
 
 <Row>
   <Column align="left">
-    <Text></Text>
+    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
   </Column>
 </Row>
 
@@ -596,6 +607,7 @@ transition: none
 <Row>
   <Column align="left">
     <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
+    <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
   </Column>
 </Row>
 
@@ -613,6 +625,7 @@ transition: none
   <Column align="left">
     <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
     <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
+    <Text>• worktree 間の移動を快適にするツールをclaude codeに書かせる</Text>
   </Column>
 </Row>
 
@@ -631,29 +644,11 @@ transition: none
     <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
     <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
     <Text>• worktree 間の移動を快適にするツールをclaude codeに書かせる</Text>
-  </Column>
-</Row>
-
-<Note>Page 41</Note>
-
----
-
-transition: none
-
---
-
-# まとめ
-
-<Row>
-  <Column align="left">
-    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
-    <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
-    <Text>• worktree 間の移動を快適にするツールをclaude codeに書かせる</Text>
     <Text>• タスクはあくまで細かく切る</Text>
   </Column>
 </Row>
 
-<Note>Page 42</Note>
+<Note>Page 41</Note>
 
 ---
 
@@ -676,7 +671,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 43</Note>
+<Note>Page 42</Note>
 <Note>自己紹介スライド</Note>
 
 ---
@@ -691,14 +686,14 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 44</Note>
+<Note>Page 43</Note>
 <Note>Ad slide</Note>
 
 ---
 
 # Thank You!
 
-<Note>Page 45</Note>
+<Note>Page 44</Note>
 
 ---
 
@@ -710,4 +705,4 @@ transition: none
 - [lazygit](https://github.com/jesseduffield/lazygit)
 
 
-<Note>Page 46</Note>
+<Note>Page 45</Note>
