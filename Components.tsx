@@ -15,7 +15,7 @@ export const Components = {
   Heading: ({ children }: { children: React.ReactNode }) => (
     <h2
       style={{
-        color: "white",
+        color: "var(--text-color)",
         fontSize: "1.5rem",
         fontWeight: "bold",
       }}
@@ -74,7 +74,7 @@ export const Components = {
   }) => (
     <div
       style={{
-        color: "white",
+        color: "var(--text-color)",
         fontSize: "1rem",
         fontWeight: bold ? "bold" : "normal",
       }}
@@ -91,7 +91,7 @@ export const Components = {
   }) => (
     <div
       style={{
-        color: "white",
+        color: "var(--text-color)",
         marginLeft: 80,
         fontSize: "0.8rem",
         fontWeight: bold ? "bold" : "normal",
@@ -107,7 +107,7 @@ export const Components = {
       target="_blank"
       rel="noopener noreferrer"
       style={{
-        color: "yellow",
+        color: "#FF7792",
         fontSize: "1rem",
         margin: 0,
       }}
