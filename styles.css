@@ -1,8 +1,64 @@
+:root {
+    --background-color: transparent;
+    --text-color: #333;
+}
+
 p {
     margin: 0px;
 }
 
 body {
-    background-color: #000;
-    color: #fff;
+    min-height: 100vh !important;
+    padding: 2rem !important;
+    background: linear-gradient(to right, #FF7792, #FFE100) !important;
+    background-color: transparent !important;
+    color: #333 !important;
+}
+
+html {
+    min-height: 100vh !important;
+    background: linear-gradient(to right, #FF7792, #FFE100) !important;
+}
+
+#app {
+    min-height: calc(100vh - 4rem) !important;
+    background: transparent !important;
+}
+
+/* Override RemdX slide container styles - keep gradient background */
+[style*="background-color: var(--background-color)"] {
+    background: linear-gradient(to right, #FF7792, #FFE100) !important;
+    background-color: transparent !important;
+}
+
+/* Target the slide container more specifically - keep gradient background */
+div[style*="position: relative"][style*="z-index: 0"] {
+    background: linear-gradient(to right, #FF7792, #FFE100) !important;
+    background-color: transparent !important;
+}
+
+/* Create white card container for slide content */
+div[style*="position: relative"][style*="z-index: 0"] > * {
+    --text-color: #333;
+    background: white !important;
+    border-radius: 1rem !important;
+    padding: 2rem !important;
+    margin: 1rem !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    min-height: calc(100vh - 10rem) !important;
+    width: calc(100% - 2rem) !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+}
+
+/* Reduce h1 font size */
+h1 {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure slide container can expand */
+div[style*="position: relative"][style*="z-index: 0"] {
+    background: linear-gradient(to right, #FF7792, #FFE100) !important;
+    background-color: transparent !important;
 }
