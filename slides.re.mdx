@@ -1,0 +1,349 @@
+export { Components } from "./Components.tsx";
+export { Themes } from "./Themes.tsx";
+
+# The Fall of React Native Bridge
+
+<Row>
+  <Column justify="center">
+    <GPTImage src="/gpt-bridge-fall.webp" />
+  </Column>
+  <Column justify="end" align="right">
+    <Text>Naturalclar</Text>
+    <Link href="https://meguro.es">meguro.es #27</Link>
+  </Column>
+</Row>
+
+---
+
+# About me
+
+<Row>
+  <Column align="left">
+    <Heading>Naturalclar</Heading>
+    <Text>Developer at Anotherball</Text>
+    <Text>React Native Community</Text>
+    <Text>
+      X: <Link href="https://x.com/natural_clar">@natural_clar</Link>
+    </Text>
+    <Text>
+      GitHub: <Link href="https://github.com/Naturalclar">Naturalclar</Link>
+    </Text>
+  </Column>
+  <Column justify="center">
+    <MyIcon />
+  </Column>
+</Row>
+
+<Note>自己紹介スライド</Note>
+
+---
+
+
+# About me
+
+<Row>
+  <Column align="center">
+    <Image width="50vw" height="30vh" objectFit="contain" src="./anilive.png"/>
+    <Link href="https://anilive.app/">Anilive.app</Link>
+  </Column>
+</Row>
+
+<Note>Ad slide</Note>
+
+---
+
+# The Fall of React Native Bridge
+
+---
+
+# 本日の概要
+
+<Row>
+  <Column align="left">
+    <Text>React Native の仕組み: Before</Text>
+    <Text>React Native New Architecture について</Text>
+    <Text>React Native Bridge: After</Text>
+  </Column>
+</Row>
+
+---
+
+# React Native の仕組み: Before
+
+<Row>
+  <Column justify="center">
+    <GPTImage src="/gpt-react-native-bridge.webp" />
+  </Column>
+</Row>
+
+---
+
+# React Native の仕組み: Before
+
+<Row>
+  <Column align="left">
+    <Text>Bridge: Obj-C/Java からJS 呼び出すための仕組み</Text>
+    <Text>Request と Response を JSON を使って非同期的にやり取りを行う</Text>
+    <Text>React の Reconsiler の結果も一旦 JSON にした上で Native 層から Yoga に渡して描画する</Text>
+    <Text>このJSONのやり取りを行う部分が Bridge と呼ばれていた</Text>
+    <Text>JavaScript とNative は Bridge を介して完全に分離されていた</Text>
+  </Column>
+</Row>
+
+<Note>
+  Reconsiler の結果がJsonになってYogaに渡される。(ShadowTree)
+  分離されていることはメリット。AngularNative がこの Bridge を使って作成されていたらしい
+</Note>
+
+---
+
+# Bridge の問題点
+
+<Row>
+  <Column align="left">
+    <Text>すべての処理が非同期で行われる</Text>
+    <SubText>Component が多い ListView 等で高速でスクロールすると描画が読み込まれるまで白画面になっていた</SubText>
+    <Text>アプリ起動時の負荷が大きい</Text>
+    <SubText>いつメソッドが呼ばれるかわからない為、アプリビルド時にすべての JS コードを起動時に読み込んでいた</SubText>
+    <Text>処理の優先順位の設定が行えない</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+# React Native New Architecture
+
+<Row>
+  <Column align="left">
+    <Text>2018年に React Conf 発表された再構築方針</Text>
+    <Text>Bridge を介さずに JavaScript と Native の通信を可能にする</Text>
+    <Text>それを可能とするために様々なステップが必要</Text>
+    <SubText>現行の Facebook アプリは React Native が使われている部分がすべて New Architecture に置き換わっている</SubText>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+
+# ここ６年で追加された機能 
+
+<Row>
+  <Column align="left">
+    <Text>JSI</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+transition: none
+
+--
+
+# ここ６年で追加された機能 
+
+<Row>
+  <Column align="left">
+    <Text>JSI</Text>
+    <Text>Hermes</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+transition: none
+
+--
+
+# ここ６年で追加された機能 
+
+<Row>
+  <Column align="left">
+    <Text>JSI</Text>
+    <Text>Hermes</Text>
+    <Text>React Native CodeGen</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+transition: none
+
+--
+
+# ここ６年で追加された機能 
+
+<Row>
+  <Column align="left">
+    <Text>JSI</Text>
+    <Text>Hermes</Text>
+    <Text>React Native CodeGen</Text>
+    <Text>Turbo Modules</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+transition: none
+
+--
+
+# ここ６年で追加された機能 
+
+<Row>
+  <Column align="left">
+    <Text>JSI</Text>
+    <Text>Hermes</Text>
+    <Text>React Native CodeGen</Text>
+    <Text>Turbo Modules</Text>
+    <Text>Fabric Renderer</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+# JSI 
+
+<Row>
+  <Column align="left">
+    <Text>JavaScript Interface</Text>
+    <SubText></SubText>
+    <Text>JSEngine のWrapper</Text>
+    <SubText>使用する JSEngine に依存しない為、それまで使っていた JSC の他、V8 や Hermes を組み込めるようになった</SubText>
+    <Text>ネイティブ層への参照を C++ で持つ</Text>
+    <SubText>JavaScript から C++ のメソッドを実行したり、その逆も可能</SubText>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+# Hermes 
+
+<Row>
+  <Column align="left">
+    <Text>JS Runtime</Text>
+    <Text>アプリビルド時にJavaScriptをバイトコードに変換する</Text>
+    <Text>JIT Compile に頼らないことで、全体の起動時間を短縮した</Text>
+    <Text>Amazon や Microsoft が typescript の実装をサポート</Text>
+  </Column>
+</Row>
+
+---
+
+# React Native Codegen
+
+<Row>
+  <Column align="left">
+    <Text>JavaScript から C++ を呼び出すコードをコンパイルする際に型情報が必要になる</Text>
+    <SubText>C++ 側のコードを手動で書くことも可能だが自動化したい</SubText>
+    <Text>型情報のある Flow や TypeScript から C++ 用の型を生成する</Text>
+    <Text>Microsoft が typescript の実装をサポート</Text>
+  </Column>
+</Row>
+
+---
+
+# Turbo Modules
+
+<Row>
+  <Column align="left">
+    <Text>Camera や Audio など、ネイティブ側に存在するモジュールを実行する仕組み</Text>
+    <SubText>以前は Bridge を介してすべてを非同期的に呼んでいた</SubText>
+    <Text>Objective-C/Swift, Java/Kotlin のコードを JSI 経由で呼び出す</Text>
+    <SubText>C++ を通して Objective-C++, JNI 経由での通信を可能にする</SubText>
+    <SubText>C++ への参照を持つため、画像データに対してフィルターを掛ける時等、JSI 側のみで処理を行って結果だけを JS 側に返すことも可能</SubText>
+  </Column>
+</Row>
+
+---
+
+# Fabrics Renderer
+
+<Row>
+  <Column align="left">
+    <Text>画面描画を同期的に行うための仕組み。</Text>
+    <SubText>以前は Bridge を介して React の consile 結果を Native に送り、そこから Yoga に渡して描画内容が決定されていた</SubText>
+    <Text>レイアウトエンジンの Yoga が同期的に呼び出せる</Text>
+    <SubText>Yoga が C++ 製なので JSI と相性が良い</SubText>
+    <Text>描画が同期的に行われることによって React 18 の concurrent rendering が React Native でもできるようになった</Text>
+  </Column>
+</Row>
+
+---
+
+# The Bridge
+
+<Row>
+  <Column align="left">
+    <Text>New Architecture への移行期間の間、後方互換性の為にBridgeは残されていた</Text>
+    <SubText>Bridgeがあることにより、アプリの起動時間やアプリサイズに影響していた</SubText>
+    <Text>Turbo Modules, Fabric Renderer, Hermes はすべてオプトイン</Text>
+    <SubText>Fabric Renderer を使わずに Hermes の恩恵だけを受けるなども可能</SubText>
+    <Text>現状、Turbo Modules と Hermes はデフォルトで有効になっている</Text>
+  </Column>
+</Row>
+
+---
+
+# Bridgeless Mode
+
+<Row>
+  <Column align="left">
+    <Text>New Architecture をすべて有効にした場合、Bridge を外すことができる(オプトイン)</Text>
+    <Text>最新の 0.74.0 では New Architecture を有効にした場合デフォルトで Bridge が無効になる</Text>
+    <SubText>0.74.0 のリリースに向けて、よく使われているサードパーティライブラリのNew Architecture対応を行った</SubText>
+    <Text>次に出る 0.75.0 では New Architecture がデフォルトで有効化される予定</Text>
+  </Column>
+</Row>
+
+---
+
+# まとめ
+
+<Row>
+  <Column align="left">
+    <Text>New Architecture によって JavaScript 層から Native コードを同期的に呼び出せるようになった</Text>
+    <Text>JS 層と Native 層を非同期的に繋げていた Bridge が最新の React Native からデフォルトで使われなくなった</Text>
+    <Text>Bridge の削除によってアプリの起動速度改善、アプリサイズの削減が行われた</Text>
+    <Text>ここ６年の地道な変更によってかなりパフォーマンス的に改善された</Text>
+  </Column>
+</Row>
+
+---
+
+# Thank You!
+
+---
+
+# Refs
+
+- [React Native New Architecture - React Conf 2018](https://www.youtube.com/watch?v=UcqRXTriUVI)
+- [React Native 0.74 Blog Post](https://reactnative.dev/blog/2024/04/22/release-0.74)
+- [Bridgeless By Default](https://github.com/reactwg/react-native-new-architecture/discussions/174)
+- [About the New Architecture](https://reactnative.dev/docs/the-new-architecture/landing-page)
+- [react-native-new-architecture/docs](https://github.com/reactwg/react-native-new-architecture/tree/main/docs)
+- [The Bridge to JSI - React Native London 2022](https://www.youtube.com/watch?v=Hzjy9ipIuyc&t=511sv)
+- [New Architecture Comparison - X post](https://x.com/notbrent/status/1778266063832056285)
