@@ -5,11 +5,11 @@ export { Themes } from "./Themes.tsx";
 
 <Row>
   <Column justify="center">
-    <GPTImage src="/gpt-agentic-coding.png"/>
+    <GPTImage src="/gpt-agentic-coding.png" width="500"/>
   </Column>
   <Column justify="end" align="right">
-    <Text>Naturalclar</Text>
-    <Link href="https://github.com/Naturalclar">Claude Code Meetup</Link>
+    <Link href="https://github.com/Naturalclar">Naturalclar</Link>
+    <Link href="https://aid.connpass.com/event/360017/">Claude Code Meetup</Link>
   </Column>
 </Row>
 
@@ -205,6 +205,16 @@ transition: none
 
 ---
 
+# git worktree
+
+```bash
+git worktree add feature-branch
+```
+
+<Note>Page 13</Note>
+
+---
+
 transition: none
 
 --
@@ -217,7 +227,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 12</Note>
+<Note>Page 14</Note>
 
 ---
 
@@ -235,7 +245,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 13</Note>
+<Note>Page 15</Note>
 
 ---
 
@@ -253,13 +263,52 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 14</Note>
+<Note>Page 16</Note>
+
+---
+
+# 自分のworktreeの使い方
+
+<Note>Page 17</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のworktreeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• Feature branch ではなく、`dev-laplus` など、それぞれの worktree の default branch として作成している</Text>
+  </Column>
+</Row>
+
+<Note>Page 18</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のworktreeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• Feature branch ではなく、`dev-laplus` など、それぞれの worktree の default branch として作成している</Text>
+    <Text>• そこから新しく作業ブランチを切って、作業状況を確認できるようにしている</Text>
+  </Column>
+</Row>
+
+<Note>Page 19</Note>
 
 ---
 
 # git worktree の問題点
 
-<Note>Page 15</Note>
+<Note>Page 20</Note>
 
 ---
 
@@ -276,7 +325,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 16</Note>
+<Note>Page 21</Note>
 
 ---
 
@@ -293,7 +342,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 17</Note>
+<Note>Page 22</Note>
 
 ---
 
@@ -303,7 +352,7 @@ transition: none
 git clone --bare <repository-url>
 ```
 
-<Note>Page 18</Note>
+<Note>Page 23</Note>
 
 ---
 
@@ -315,7 +364,7 @@ git clone --bare <repository-url>
   </Column>
 </Row>
 
-<Note>Page 19</Note>
+<Note>Page 24</Note>
 
 ---
 
@@ -332,7 +381,94 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 20</Note>
+<Note>Page 25</Note>
+
+---
+
+transition: none
+
+--
+
+# git bare clone
+
+<Row>
+  <Column align="left">
+    <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
+    <Text>• 複数のworktreeを作成してもdiffに表示されない</Text>
+    <Text>• git worktree を使って作業する前提のclone方法</Text>
+  </Column>
+</Row>
+
+<Note>Page 26</Note>
+
+---
+
+# 自分のClaude Codeの使い方
+
+<Note>Page 27</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のClaude Codeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+  </Column>
+</Row>
+
+<Note>Page 28</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のClaude Codeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
+  </Column>
+</Row>
+
+<Note>Page 29</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のClaude Codeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
+    <Text>• 自分の腕が増えたようなイメージ</Text>
+  </Column>
+</Row>
+
+<Note>Page 30</Note>
+
+---
+
+# まとめ
+
+<Row>
+  <Column align="left">
+    <Text></Text>
+  </Column>
+</Row>
+
+<Note>Page 31</Note>
 
 ---
 
@@ -355,7 +491,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 21</Note>
+<Note>Page 32</Note>
 <Note>自己紹介スライド</Note>
 
 ---
@@ -370,40 +506,23 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 22</Note>
+<Note>Page 33</Note>
 <Note>Ad slide</Note>
-
----
-
-# Claude Codeによる並列開発のすゝめ
-
-<Note>Page 23</Note>
-
----
-
-# まとめ
-
-<Row>
-  <Column align="left">
-    <Text></Text>
-    <Text></Text>
-    <Text></Text>
-    <Text></Text>
-  </Column>
-</Row>
-
-<Note>Page 24</Note>
 
 ---
 
 # Thank You!
 
-<Note>Page 25</Note>
+<Note>Page 34</Note>
 
 ---
 
 # Refs
 
-- [Link](url)
+- [Git: Worktree](https://git-scm.com/docs/git-worktree)
+- [Git: Bare Clone](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---bare)
+- [YouTube: Git's Best and Most Unknown Feature](https://www.youtube.com/watch?v=2uEqYw-N8uE&pp=ygUGI2dpdDEw)
+- [lazygit](https://github.com/jesseduffield/lazygit)
 
-<Note>Page 26</Note>
+
+<Note>Page 35</Note>
