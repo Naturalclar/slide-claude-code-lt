@@ -118,32 +118,44 @@ export const Components = {
   GPTImage: ({
     src,
     alt,
+    width = 400,
+    height = 400,
   }: {
     src: string;
     alt: string;
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
   }) => (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
         flex: 1,
       }}
     >
-      <img
-        src={src}
-        alt={"*AIで生成された画像"}
+      <div
         style={{
-          height: 400,
-          width: 400,
-          objectFit: "contain",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          width: "fit-content",
         }}
-      />
-      <p style={{ margin: 0, fontSize: 12, opacity: 0.4 }}>
-        *AIで生成された画像
-      </p>
+      >
+        <img
+          src={src}
+          alt={"*AIで生成された画像"}
+          style={{
+            height,
+            width,
+            objectFit: "contain",
+          }}
+        />
+        <p style={{ margin: 0, fontSize: 12, opacity: 0.4 }}>
+          *AIで生成された画像
+        </p>
+      </div>
     </div>
   ),
   Image: ({

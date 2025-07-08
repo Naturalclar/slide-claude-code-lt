@@ -52,3 +52,9 @@ npm run deploy
 - Custom patch applied to `@nkzw/remdx@0.8.0` (see patches directory)
 - Slide images are stored in the `public/` directory
 - The presentation runs on port 5173 in development mode
+
+## Slide Management
+
+- Slides are separated by `---` markers in `slides.re.mdx`
+- Each slide should have a `<Note>Page X</Note>` component indicating its page number
+- **IMPORTANT**: When adding, removing, or reordering slides, always update the page numbers in the `<Note>` components accordingly to maintain accurate slide numbering
