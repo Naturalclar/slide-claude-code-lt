@@ -15,17 +15,153 @@ export { Themes } from "./Themes.tsx";
 
 <Note>Page 1</Note>
 <Note>
+  Claude Code での並列開発のすすめというタイトルで発表させていだだきます。Naturalclarです。よろしくおねがいします。
   メモ：
   git worktree に付いて説明
   git bare clone に付いて説明
   その他、便利スクリプトをclaude codeに書いてもらった話
-
+  並列開発における注意点
+  - タスクをかなり細かく分割してスコープを小さくする。CRUD処理のC、R、U、Dをそれぞれ別のターミナルで実装させる。
+  - テストを書かせる。
+  - AI にやらせるというより、自分ならこう実装していくというステップをAIに指示する、あくまで自分の手が増えているイメージ。
   便利スクリプト：
   - worktree を切り替えるスクリプト：各Worktreeのbranch名がわかるので何をやっているかがわかる
   - worktree の root branch に戻るスクリプト
   - .env ファイルを各worktreeにコピーするスクリプト
   - 各tmux paneに同じコマンドを実行するスクリプト
+
 </Note>
+
+---
+
+# 本日の概要
+
+<Row>
+  <Column align="left">
+    <Text>自分のセットアップ紹介</Text>
+    <Text>git worktree について</Text>
+    <Text>git bare clone について</Text>
+    <Text>その他便利スクリプトの紹介</Text>
+  </Column>
+</Row>
+
+<Note>Page 2</Note>
+<Note>
+  今日の発表の概要について説明します。
+  - 自分のセットアップ紹介: 現在の開発環境の紹介
+  - git worktree について: 複数のワーキングツリーを管理する方法
+  - git bare clone について: リポジトリの効率的な管理方法
+  - その他便利スクリプトの紹介: 開発効率を上げるツールたち
+  
+  他の人のターミナルがどうなってるのか興味あるのでぜひシェアしあいましょう
+</Note>
+
+---
+
+# セットアップ紹介
+
+<Row>
+  <Column align="center">
+    <Image width="80vw" height="50vh" objectFit="contain" src="./terminal.png"/>
+  </Column>
+</Row>
+
+<Note>Page 3</Note>
+
+---
+
+transition: none
+
+--
+
+# セットアップ紹介
+
+<Row>
+  <Column align="center">
+    <Image width="80vw" height="50vh" objectFit="contain" src="./terminal-detail.png"/>
+  </Column>
+</Row>
+
+<Note>Page 4</Note>
+
+---
+
+transition: none
+
+--
+
+
+# セットアップ紹介
+
+<Row>
+  <Column align="center">
+    <Image width="80vw" height="50vh" objectFit="contain" src="./diff.png"/>
+  </Column>
+</Row>
+
+<Note>Page 5</Note>
+
+<Note> TODO: edit image to show diff viewer</Note>
+
+---
+
+transition: none
+
+--
+
+
+# セットアップ紹介
+
+<Row>
+  <Column align="center">
+    <Image width="80vw" height="50vh" objectFit="contain" src="./editor.png"/>
+  </Column>
+</Row>
+
+<Note>Page 6</Note>
+
+
+<Note> 
+  2つ目のwindowは各worktreeのdiffを見たり、手作業でコードする場所として使っています。
+  3つ目のwindowは各worktreeのサーバー、クライアントを立ち上げて動作確認する場所として使っています。
+  その他、各worktreeのテスト結果を確認するために都度windowを開いています。
+  TODO: edit image to show manual editing
+</Note>
+
+---
+
+# 並列開発の問題点
+
+<Note>Page 7</Note>
+
+---
+
+transition: none
+
+--
+
+# 並列開発の問題点
+
+<Row>
+  <Column align="left">
+    <Text>• 作業のコンフリクト</Text>
+  </Column>
+</Row>
+
+<Note>Page 8</Note>
+
+---
+
+# 並列開発の問題点
+
+<Row>
+  <Column align="left">
+    <Text>• 作業のコンフリクト</Text>
+    <Text>• 他のメンバーのコードの動作確認</Text>
+  </Column>
+</Row>
+
+<Note>Page 9</Note>
 
 ---
 
@@ -48,7 +184,7 @@ export { Themes } from "./Themes.tsx";
   </Column>
 </Row>
 
-<Note>Page 2</Note>
+<Note>Page 10</Note>
 <Note>自己紹介スライド</Note>
 
 ---
@@ -63,28 +199,14 @@ export { Themes } from "./Themes.tsx";
   </Column>
 </Row>
 
-<Note>Page 3</Note>
+<Note>Page 11</Note>
 <Note>Ad slide</Note>
 
 ---
 
 # Claude Codeによる並列開発のすゝめ
 
-<Note>Page 4</Note>
-
----
-
-# 本日の概要
-
-<Row>
-  <Column align="left">
-    <Text></Text>
-    <Text></Text>
-    <Text></Text>
-  </Column>
-</Row>
-
-<Note>Page 5</Note>
+<Note>Page 12</Note>
 
 ---
 
@@ -99,13 +221,13 @@ export { Themes } from "./Themes.tsx";
   </Column>
 </Row>
 
-<Note>Page 6</Note>
+<Note>Page 13</Note>
 
 ---
 
 # Thank You!
 
-<Note>Page 7</Note>
+<Note>Page 14</Note>
 
 ---
 
@@ -113,4 +235,4 @@ export { Themes } from "./Themes.tsx";
 
 - [Link](url)
 
-<Note>Page 8</Note>
+<Note>Page 15</Note>
