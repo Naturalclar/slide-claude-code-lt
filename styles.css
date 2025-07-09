@@ -10,20 +10,27 @@ p {
 }
 
 body {
-    min-height: 100vh !important;
-    padding: 2rem !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    padding: 1rem !important;
+    margin: 0 !important;
+    overflow: hidden !important;
     background: linear-gradient(to right, #FF7792, #FFE100) !important;
     background-color: transparent !important;
     color: #333 !important;
 }
 
 html {
-    min-height: 100vh !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
     background: linear-gradient(to right, #FF7792, #FFE100) !important;
 }
 
 #app {
-    min-height: calc(100vh - 4rem) !important;
+    height: calc(100vh - 2rem) !important;
+    max-height: calc(100vh - 2rem) !important;
+    overflow: hidden !important;
     background: transparent !important;
 }
 
@@ -44,19 +51,24 @@ div[style*="position: relative"][style*="z-index: 0"] > * {
     --text-color: #333;
     background: white !important;
     border-radius: 1rem !important;
-    padding: 2rem !important;
-    margin: 1rem !important;
+    padding: 1.5rem !important;
+    margin: 0.5rem !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-    min-height: calc(100vh - 10rem) !important;
-    width: calc(100% - 2rem) !important;
+    height: calc(100vh - 3rem) !important;
+    max-height: calc(100vh - 3rem) !important;
+    width: calc(100% - 1rem) !important;
     box-sizing: border-box !important;
-    overflow: visible !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
 }
 
 /* Reduce h1 font size */
 h1 {
     font-size: 1.5rem !important;
     line-height: 1.2 !important;
+    margin: 1rem 0 !important;
 }
 
 /* Ensure slide container can expand */
@@ -84,4 +96,29 @@ code {
     padding: 2px 4px !important;
     border-radius: 4px !important;
     font-family: 'Fira Code', monospace !important;
+}
+
+/* Ensure images don't exceed available space */
+img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* Override RemdX transform scaling that causes layout issues */
+div[style*="transform: scale"] {
+    transform: none !important;
+    transform-origin: unset !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Target the specific RemdX slide container */
+div[style*="position: relative"][style*="overflow: hidden"][style*="transform: scale"] {
+    transform: none !important;
+    transform-origin: unset !important;
+    width: 100% !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: visible !important;
 }
