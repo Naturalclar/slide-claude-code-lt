@@ -11,11 +11,12 @@ A single-deck RemdX (React + MDX) presentation: 「Claude Codeによる並列開
 ```bash
 bun dev         # dev server on :5173 (npm run dev also works)
 bun run build   # vite build -> dist/
+bun run check:pages  # validate <Note>Page N</Note> markers against slide order
 bun run screenshot   # requires `bun dev` running first (see below)
 bun run deploy  # vercel --prod
 ```
 
-There is no test suite, linter, or typecheck script — TypeScript is not even a declared dependency, and Vite does not typecheck. Verify changes by loading the dev server and paging through the affected slides.
+CI (`.github/workflows/ci.yml`) runs `check:pages` then `build` on pushes to `main` and on every PR. That is the whole safety net: there is no test suite, no linter, and no typecheck — TypeScript is not even a declared dependency, and Vite does not typecheck, so `Components.tsx`/`Themes.tsx` type errors reach production. Verify visual changes by loading the dev server and paging through the affected slides.
 
 `screenshot` runs `screenshot.mjs`, which drives Playwright against `http://localhost:5173` and writes `card.png` **into the repo root**. The OGP/Twitter meta tags in `index.html` point at `/card.png`, which is served from `public/` — so after regenerating, move the file into `public/card.png` or the social card won't change.
 
@@ -48,7 +49,7 @@ The render chain is small but entirely implicit; nothing imports anything the us
   ```
   `transition: none` is used heavily for build-up sequences — several near-identical slides that progressively reveal content, which should feel like one slide.
 - `<Note>` renders `display: none`. It carries both the page number (`<Note>Page 12</Note>`) and free-form Japanese speaker notes; a slide often has two or more `<Note>` blocks.
-- Page markers currently run `1`–`46` in slide order, one per slide, with no gaps. Nothing validates this, so it drifts easily: when adding, removing, or reordering slides, renumber every `<Note>Page N</Note>` from the insertion point onward.
+- Page markers run `1`–`46` in slide order, one per slide. When adding, removing, or reordering slides, renumber every `<Note>Page N</Note>` from the insertion point onward — `bun run check:pages` enforces this in CI and reports offenders as `file:line`.
 - Images live in `public/` and are referenced both as `/name.png` and `./name.png`; both resolve.
 
 ### Layout constraints (`styles.css`)
