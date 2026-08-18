@@ -18,7 +18,7 @@ bun run deploy  # vercel --prod
 
 CI (`.github/workflows/ci.yml`) runs `check:pages` then `build` on pushes to `main` and on every PR. That is the whole safety net: there is no test suite, no linter, and no typecheck — TypeScript is not even a declared dependency, and Vite does not typecheck, so `Components.tsx`/`Themes.tsx` type errors reach production. Verify visual changes by loading the dev server and paging through the affected slides.
 
-`screenshot` runs `screenshot.mjs`, which drives Playwright against `http://localhost:5173` and writes `card.png` **into the repo root**. The OGP/Twitter meta tags in `index.html` point at `/card.png`, which is served from `public/` — so after regenerating, move the file into `public/card.png` or the social card won't change.
+`screenshot` runs `screenshot.mjs`, which drives Playwright against `http://localhost:5173` and writes `public/card.png` — where the OGP/Twitter meta tags in `index.html` resolve `/card.png` from. It exits with a clear message if nothing is serving `:5173`. Regenerate only on a machine with Japanese fonts installed: without them the `ゝ` in the title renders blank and the card silently degrades.
 
 ## Architecture
 
@@ -62,7 +62,6 @@ The render chain is small but entirely implicit; nothing imports anything the us
 
 ## Dependency notes
 
-- `patches/@nkzw__remdx@0.8.0.patch` is **stale**: the dependency is at `0.17.0` and `package.json` declares no `patchedDependencies`, so the patch is not applied. Do not treat it as active behavior.
 - Bun is the package manager (`bun.lockb`); npm scripts work too. React 19, Vite 6.
 
 ## `docs/ai/`
