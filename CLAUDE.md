@@ -48,7 +48,7 @@ The render chain is small but entirely implicit; nothing imports anything the us
   ```
   `transition: none` is used heavily for build-up sequences — several near-identical slides that progressively reveal content, which should feel like one slide.
 - `<Note>` renders `display: none`. It carries both the page number (`<Note>Page 12</Note>`) and free-form Japanese speaker notes; a slide often has two or more `<Note>` blocks.
-- **Page numbers have drifted** — everything from the "Page 29" slide onward is currently stamped `Page 46`, and there is a duplicate `Page 22`. When adding, removing, or reordering slides, renumber the `<Note>Page N</Note>` markers so numbering stays accurate; fixing existing drift in a range you touch is welcome.
+- Page markers currently run `1`–`46` in slide order, one per slide, with no gaps. Nothing validates this, so it drifts easily: when adding, removing, or reordering slides, renumber every `<Note>Page N</Note>` from the insertion point onward.
 - Images live in `public/` and are referenced both as `/name.png` and `./name.png`; both resolve.
 
 ### Layout constraints (`styles.css`)
