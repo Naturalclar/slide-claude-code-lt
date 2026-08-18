@@ -1,5 +1,5 @@
 {
-  "name": "slide-static-hermes",
+  "name": "slide-claude-code-lt",
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
@@ -16,13 +16,9 @@
     "vercel": "^44.2.13",
     "vite": "^6.0.7"
   },
-  "pnpm": {
-    "overrides": {
-      "shiki": "^0.11.0"
-    }
-  },
   "scripts": {
     "build": "vite build",
+    "check:pages": "node ./scripts/check-page-numbers.mjs",
     "dev": "vite dev",
     "screenshot": "node ./screenshot.mjs",
     "deploy": "vercel --prod"
