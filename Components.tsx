@@ -43,14 +43,16 @@ export const Components = {
       }}
     />
   ),
+  // A <div>, not a <p>: notes hold paragraphs and lists, which are illegal
+  // inside <p> and make React log a nesting error on every load.
   Note: ({ children }: { children: React.ReactNode }) => (
-    <p
+    <div
       style={{
         display: "none",
       }}
     >
       {children}
-    </p>
+    </div>
   ),
   Row: ({ children }: { children: React.ReactNode }) => (
     <div
