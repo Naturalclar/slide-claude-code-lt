@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A single-deck RemdX (React + MDX) presentation: 「Claude Codeによる並列開発のすゝめ」, an LT given at Claude Code Meetup about parallel development with git worktree / git bare clone. Slide content and speaker notes are in Japanese. Deployed to Vercel at `claude-code-meetup-lt.vercel.app`.
+A single-deck RemdX (React + MDX) presentation: 「Claude Codeによる並列開発のすゝめ」, an LT given at Claude Code Meetup about parallel development with git worktree / git bare clone. Slide content and speaker notes are in Japanese.
+
+Deployed to two places from `main`: Vercel at `claude-code-meetup-lt.vercel.app` (still the canonical URL the OGP tags point at) and GitHub Pages at `naturalclar.github.io/slide-claude-code-lt/` via `.github/workflows/deploy-pages.yml`. Pages serves from a sub-path, which is why `vite.config.ts` sets `base: './'` — keep asset references relative or they break there while continuing to work on Vercel.
 
 ## Commands
 
@@ -51,7 +53,7 @@ The render chain is small but entirely implicit; nothing imports anything the us
   `transition: none` is used heavily for build-up sequences — several near-identical slides that progressively reveal content, which should feel like one slide.
 - `<Note>` renders `display: none`. It carries both the page number (`<Note>Page 12</Note>`) and free-form Japanese speaker notes; a slide often has two or more `<Note>` blocks.
 - Page markers run `1`–`46` in slide order, one per slide. When adding, removing, or reordering slides, renumber every `<Note>Page N</Note>` from the insertion point onward — `bun run check:pages` enforces this in CI and reports offenders as `file:line`.
-- Images live in `public/` and are referenced both as `/name.png` and `./name.png`; both resolve.
+- Images live in `public/` and **must be referenced as `./name.png`, never `/name.png`**. These are runtime JSX strings that Vite does not rewrite, so a root-absolute path resolves against the host root and 404s under the GitHub Pages project sub-path. It still works on Vercel, so this breaks on one deploy target only.
 
 ### Layout constraints (`styles.css`)
 
