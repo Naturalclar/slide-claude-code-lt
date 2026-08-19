@@ -19,6 +19,9 @@ npm run dev
 # Build for production
 npm run build
 
+# Type-check (also runs in CI, along with the page-marker check)
+npm run typecheck
+
 # Generate slide screenshots
 npm run screenshot
 

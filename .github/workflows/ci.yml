@@ -21,4 +21,6 @@ jobs:
       # rendered deck — check them before the build.
       - run: bun run check:pages
 
+      - run: bun run typecheck
+
       - run: bun run build

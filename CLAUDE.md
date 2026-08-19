@@ -12,11 +12,12 @@ A single-deck RemdX (React + MDX) presentation: 「Claude Codeによる並列開
 bun dev         # dev server on :5173 (npm run dev also works)
 bun run build   # vite build -> dist/
 bun run check:pages  # validate <Note>Page N</Note> markers against slide order
+bun run typecheck    # tsc --noEmit
 bun run screenshot   # requires `bun dev` running first (see below)
 bun run deploy  # vercel --prod
 ```
 
-CI (`.github/workflows/ci.yml`) runs `check:pages` then `build` on pushes to `main` and on every PR. That is the whole safety net: there is no test suite, no linter, and no typecheck — TypeScript is not even a declared dependency, and Vite does not typecheck, so `Components.tsx`/`Themes.tsx` type errors reach production. Verify visual changes by loading the dev server and paging through the affected slides.
+CI (`.github/workflows/ci.yml`) runs `check:pages`, `typecheck`, then `build` on pushes to `main` and on every PR. That is the whole safety net — there is no test suite and no linter. Note that `tsc` covers `Components.tsx`, `Themes.tsx` and `vite.config.ts` only: `slides.re.mdx` is typed through `slides.re.mdx.d.ts`, so slide markup itself is never type-checked, and Vite does not typecheck during `build`. Verify visual changes by loading the dev server and paging through the affected slides.
 
 `screenshot` runs `screenshot.mjs`, which drives Playwright against `http://localhost:5173` and writes `public/card.png` — where the OGP/Twitter meta tags in `index.html` resolve `/card.png` from. It exits with a clear message if nothing is serving `:5173`. Regenerate only on a machine with Japanese fonts installed: without them the `ゝ` in the title renders blank and the card silently degrades.
 
