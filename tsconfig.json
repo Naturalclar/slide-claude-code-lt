@@ -13,14 +13,6 @@
     "noEmit": true,
     "noImplicitOverride": true,
     "noUnusedLocals": true,
-    "plugins": [
-      {
-        "lint": {
-          "unknownProperties": "error"
-        },
-        "name": "typescript-styled-plugin"
-      }
-    ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
