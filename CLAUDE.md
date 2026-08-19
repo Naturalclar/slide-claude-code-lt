@@ -59,11 +59,13 @@ The render chain is small but entirely implicit; nothing imports anything the us
 
 - RemdX's automatic slide **scaling transform is disabled**. Content does not shrink to fit — a slide that overflows the fixed white card (`calc(100vh - 3rem)`, `overflow: hidden`) is silently clipped. This is why `Components.tsx` sizes things in `vh`/fixed px and why images are given explicit `width`/`height`.
 - The page paints a pink→yellow gradient background with a white card on top, forced globally. `Themes.tsx` only swaps the `--background-color`/`--text-color` CSS vars, so the `dark` theme is largely neutralized by these overrides.
-- Any `@nkzw/remdx` upgrade can change the emitted inline styles and break these selectors. Check every slide visually after bumping it.
+- Any `@nkzw/remdx` upgrade can change the emitted inline styles and break these selectors. Check every slide visually after bumping it. The 0.17 → 20 bump was checked this way and the selectors survived it, but that is luck, not a guarantee.
 
 ## Dependency notes
 
-- Bun is the package manager (`bun.lockb`); npm scripts work too. React 19, Vite 6.
+- Bun is the package manager (`bun.lockb`); npm scripts work too. React 19, Vite 8, `@nkzw/remdx` 20.
+- Keep `@nkzw/remdx` and `@nkzw/vite-plugin-remdx` on the **same version**. They are released in lockstep, and the plugin was previously ranged as `"*"`, which silently resolved it to a different major than the runtime.
+- The plugin owns Shiki, so bumping it changes code rendering: on remdx 20 (Shiki 4) fenced code blocks are syntax-highlighted in colour, where remdx 0.17 (Shiki 0.10) rendered them monochrome.
 
 ## `docs/ai/`
 
