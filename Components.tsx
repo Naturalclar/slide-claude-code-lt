@@ -25,7 +25,7 @@ export const Components = {
   ),
   MyIcon: () => (
     <img
-      src="/naturalclar.jpg"
+      src="./naturalclar.jpg"
       style={{
         height: 400,
         width: 400,
