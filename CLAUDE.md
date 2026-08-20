@@ -19,11 +19,12 @@ bun dev         # dev server on :5173 (npm run dev also works)
 bun run build   # vite build -> dist/
 bun run check:pages  # validate <Note>Page N</Note> markers against slide order
 bun run typecheck    # tsc --noEmit
+bun run check:styles # build first; asserts styles.css still matches RemdX's DOM
 bun run screenshot   # requires `bun dev` running first (see below)
 bun run deploy  # vercel --prod
 ```
 
-CI (`.github/workflows/ci.yml`) runs `check:pages`, `typecheck`, then `build` on pushes to `main` and on every PR. That is the whole safety net — there is no test suite and no linter. Note that `tsc` covers `Components.tsx`, `Themes.tsx` and `vite.config.ts` only: `slides.re.mdx` is typed through `slides.re.mdx.d.ts`, so slide markup itself is never type-checked, and Vite does not typecheck during `build`. Verify visual changes by loading the dev server and paging through the affected slides.
+CI (`.github/workflows/ci.yml`) runs `check:pages`, `typecheck`, `build`, then `check:styles` on pushes to `main` and on every PR. That is the whole safety net — there is no test suite and no linter. Note that `tsc` covers `Components.tsx`, `Themes.tsx` and `vite.config.ts` only: `slides.re.mdx` is typed through `slides.re.mdx.d.ts`, so slide markup itself is never type-checked, and Vite does not typecheck during `build`. Verify visual changes by loading the dev server and paging through the affected slides.
 
 `screenshot` runs `screenshot.mjs`, which drives Playwright against `http://localhost:5173` and writes `public/card.png` — the file the OGP/Twitter `og:image` URL points at, served as `naturalclar.dev/slide-claude-code-lt/card.png`. It exits with a clear message if nothing is serving `:5173`. Regenerate only on a machine with Japanese fonts installed: without them the `ゝ` in the title renders blank and the card silently degrades.
 
@@ -65,7 +66,9 @@ The render chain is small but entirely implicit; nothing imports anything the us
 
 - RemdX's automatic slide **scaling transform is disabled**. Content does not shrink to fit — a slide that overflows the fixed white card (`calc(100vh - 3rem)`, `overflow: hidden`) is silently clipped. This is why `Components.tsx` sizes things in `vh`/fixed px and why images are given explicit `width`/`height`.
 - The page paints a pink→yellow gradient background with a white card on top, forced globally. `Themes.tsx` only swaps the `--background-color`/`--text-color` CSS vars, so the `dark` theme is largely neutralized by these overrides.
-- Any `@nkzw/remdx` upgrade can change the emitted inline styles and break these selectors. Check every slide visually after bumping it. The 0.17 → 20 bump was checked this way and the selectors survived it, but that is luck, not a guarantee.
+- RemdX renders its containers with **inline styles and no classes or data attributes**, so there is nothing stabler to target — matching on style strings is the only option available, not a shortcut someone took.
+- Because of that, an `@nkzw/remdx` upgrade can stop these selectors matching and silently drop the white card, the gradient, or the scale override. `bun run check:styles` (`scripts/check-styles.mjs`) guards this in CI: it serves the real build, asserts every selector still matches, and asserts the result actually paints — 46 white cards, no surviving scale transform, gradient present. It fails with the specific override that broke.
+- The guard is not a substitute for looking: it proves the overrides still apply, not that the deck looks right. Still page through the slides after a bump.
 
 ## Dependency notes
 
