@@ -6,9 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A single-deck RemdX (React + MDX) presentation: 「Claude Codeによる並列開発のすゝめ」, an LT given at Claude Code Meetup about parallel development with git worktree / git bare clone. Slide content and speaker notes are in Japanese.
 
-Deployed to two places from `main`: **GitHub Pages at `naturalclar.github.io/slide-claude-code-lt/` is canonical** — it is what the OGP/Twitter tags in `index.html` point at — published by `.github/workflows/deploy-pages.yml`. Vercel at `claude-code-meetup-lt.vercel.app` still builds and serves the same deck, but is no longer the advertised URL.
+Deployed to two places from `main`: **GitHub Pages, served at `naturalclar.dev/slide-claude-code-lt/`, is canonical** — it is what the OGP/Twitter tags in `index.html` point at — published by `.github/workflows/deploy-pages.yml`. Vercel at `claude-code-meetup-lt.vercel.app` still builds and serves the same deck, but is no longer the advertised URL.
 
-Pages serves from a sub-path, which is why `vite.config.ts` sets `base: './'` — keep asset references relative or they break there while continuing to work on Vercel. The OGP tags are the exception: they must stay **absolute** (`https://naturalclar.github.io/slide-claude-code-lt/...`), since crawlers do not resolve relative URLs. Vite leaves `meta content` untouched, so they are not rewritten by `base`.
+`naturalclar.dev` is a custom domain on the owner's *user* Pages site, so every project's Pages moves under it and this repo is reached at `naturalclar.dev/slide-claude-code-lt/`, not at `naturalclar.github.io/...`. The custom domain lives in Pages settings, not in this repo — there is no `CNAME` file here, and the deploy workflow does not need one.
+
+Pages serves from a sub-path, which is why `vite.config.ts` sets `base: './'` — keep asset references relative or they break there while continuing to work on Vercel. The OGP tags are the exception: they must stay **absolute** (`https://naturalclar.dev/slide-claude-code-lt/...`), since crawlers do not resolve relative URLs. Vite leaves `meta content` untouched, so they are not rewritten by `base`.
 
 ## Commands
 
@@ -23,7 +25,7 @@ bun run deploy  # vercel --prod
 
 CI (`.github/workflows/ci.yml`) runs `check:pages`, `typecheck`, then `build` on pushes to `main` and on every PR. That is the whole safety net — there is no test suite and no linter. Note that `tsc` covers `Components.tsx`, `Themes.tsx` and `vite.config.ts` only: `slides.re.mdx` is typed through `slides.re.mdx.d.ts`, so slide markup itself is never type-checked, and Vite does not typecheck during `build`. Verify visual changes by loading the dev server and paging through the affected slides.
 
-`screenshot` runs `screenshot.mjs`, which drives Playwright against `http://localhost:5173` and writes `public/card.png` — the file the OGP/Twitter `og:image` URL points at, served as `/slide-claude-code-lt/card.png` on Pages. It exits with a clear message if nothing is serving `:5173`. Regenerate only on a machine with Japanese fonts installed: without them the `ゝ` in the title renders blank and the card silently degrades.
+`screenshot` runs `screenshot.mjs`, which drives Playwright against `http://localhost:5173` and writes `public/card.png` — the file the OGP/Twitter `og:image` URL points at, served as `naturalclar.dev/slide-claude-code-lt/card.png`. It exits with a clear message if nothing is serving `:5173`. Regenerate only on a machine with Japanese fonts installed: without them the `ゝ` in the title renders blank and the card silently degrades.
 
 ## Architecture
 
