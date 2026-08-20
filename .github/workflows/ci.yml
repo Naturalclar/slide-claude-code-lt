@@ -24,3 +24,9 @@ jobs:
       - run: bun run typecheck
 
       - run: bun run build
+
+      # check:styles drives a real browser over the built deck, so the browser
+      # has to be present. It runs after build because it serves dist/.
+      - run: bunx playwright install --with-deps chromium
+
+      - run: bun run check:styles

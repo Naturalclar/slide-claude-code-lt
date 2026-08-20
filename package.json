@@ -20,6 +20,7 @@
   "scripts": {
     "build": "vite build",
     "check:pages": "node ./scripts/check-page-numbers.mjs",
+    "check:styles": "node ./scripts/check-styles.mjs",
     "typecheck": "tsc --noEmit",
     "dev": "vite dev",
     "screenshot": "node ./screenshot.mjs",
